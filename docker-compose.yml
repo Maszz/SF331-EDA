@@ -5,7 +5,7 @@ services:
       context: .
       dockerfile: apps/consumer/Dockerfile
     env_file:
-      - .env
+      - apps/consumer/.env
     networks:
       - app-net
    
