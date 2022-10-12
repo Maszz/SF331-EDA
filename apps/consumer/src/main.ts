@@ -1,11 +1,9 @@
 import { NestFactory } from '@nestjs/core';
-import { AppProducerModule } from './producer/app.module';
 import { ClientsModule, Transport } from '@nestjs/microservices';
-import { AppConsumerModule } from './consumer/app.module';
+import { AppConsumerModule } from './app.module';
+import { ConfigService } from '@nestjs/config';
 
 async function bootstrap() {
-  const producer = await NestFactory.create(AppProducerModule);
-  await producer.listen(3001);
   const consumer = await NestFactory.createMicroservice(AppConsumerModule, {
     transport: Transport.RMQ,
     options: {
@@ -17,6 +15,9 @@ async function bootstrap() {
       prefetchCount: 1,
     },
   });
+  // const configService = consumer.get(ConfigService);
+
   await consumer.listen();
+  console.log('consumer on listening')
 }
 bootstrap();
