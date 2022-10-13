@@ -6,8 +6,11 @@ import { ConfigModule } from '@nestjs/config';
 import { envConfigObject } from './config/configuration';
 @Module({
   imports: [
-    ConfigModule.forRoot({ isGlobal: true, load: [envConfigObject] ,  envFilePath: 'apps/producer/.env',
-  }),
+    ConfigModule.forRoot({
+      isGlobal: true,
+      load: [envConfigObject],
+      envFilePath: 'apps/producer/.env',
+    }),
     RabbitMQModule,
   ],
   controllers: [AppController],

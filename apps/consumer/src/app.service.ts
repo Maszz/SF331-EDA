@@ -8,7 +8,7 @@ export class AppService {
 
   CpuBoundTask(data: any) {
     const res = new Promise((resolve) => {
-      setTimeout(resolve, 10000);
+      setTimeout(resolve, 1000);
     });
     Promise.resolve(res).then(() => {
       console.log('CpuBoundTask done w/ data', data);

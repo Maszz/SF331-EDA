@@ -9,8 +9,7 @@ async function bootstrap() {
     options: {
       urls: [process.env.RABBITMQ_URL],
       queue: 'rabbit-mq-demo',
-      // false = manual acknowledgement; true = automatic acknowledgment
-      noAck: false,
+
       // Get one by one
       // prefetchCount: 1,
     },

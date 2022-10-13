@@ -4,9 +4,11 @@ import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [ConfigModule.forRoot({
-    envFilePath: 'apps/consumer/.env',
-  })],
+  imports: [
+    ConfigModule.forRoot({
+      envFilePath: 'apps/consumer/.env',
+    }),
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

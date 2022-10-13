@@ -18,13 +18,8 @@ export class AppController {
     @Payload() data: { msg: string; priority: number },
     @Ctx() context: RmqContext,
   ) {
-    const channel = context.getChannelRef();
-    const orginalMessage = context.getMessage();
-
     console.log('Consumer Recive: ', data);
     this.appService.CpuBoundTask(data);
     // console.log('Finish Cpu Bound Task');
-
-    channel.ack(orginalMessage);
   }
 }

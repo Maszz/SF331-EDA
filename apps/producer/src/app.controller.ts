@@ -1,5 +1,6 @@
 import { Controller, Get } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
+import { resolve } from 'node:path/win32';
 import { AppService } from './app.service';
 import { RabbitMQService } from './rabbit-mq.service';
 @Controller()
@@ -11,11 +12,12 @@ export class AppController {
 
   @Get()
   async sendMsg() {
-    this.rabbitMQService.send('demo-pattern', {
+    const sub = this.rabbitMQService.send('demo-pattern', {
       msg: 'Hello World',
       priority: 1,
     });
+
     console.log('sent queue to rabbit-mq-demo queue');
-    return 'Message sent to the queue!';
+    return 'sent queue to rabbit-mq-demo queue';
   }
 }
