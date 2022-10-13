@@ -8,6 +8,8 @@ services:
       - apps/consumer/.env
     networks:
       - app-net
+    deploy:
+      replicas: 5
    
   producer:
     build:

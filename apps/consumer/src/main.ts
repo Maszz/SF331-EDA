@@ -12,12 +12,12 @@ async function bootstrap() {
       // false = manual acknowledgement; true = automatic acknowledgment
       noAck: false,
       // Get one by one
-      prefetchCount: 1,
+      // prefetchCount: 1,
     },
   });
   // const configService = consumer.get(ConfigService);
 
   await consumer.listen();
-  console.log('consumer on listening')
+  console.log('consumer on listening');
 }
 bootstrap();
